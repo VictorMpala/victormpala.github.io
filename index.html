@@ -1,1 +1,125 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Execution</title>
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        #title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .customButton {
+            background-color: blue;
+            color: white;
+            padding: 37.5px 75px; /* Increased button size */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .customButton:hover {
+            background-color: darkblue;
+        }
+
+        .customButton.on {
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="title">System</h1>
+
+<div class="card-container">
+    <div class="card">
+        <button class="customButton" id="executeButton1">D1 OFF</button>
+    </div>
+    <div class="card">
+        <button class="customButton" id="executeButton2">D2 OFF</button>
+    </div>
+    <div class="card">
+        <button class="customButton" id="executeButton3">D3 OFF</button>
+    </div>
+</div>
+
+<script>
+    var buttonStates = {
+        "executeButton1": false,
+        "executeButton2": false,
+        "executeButton3": false
+    };
+    
+    function toggleButtonState(buttonId) {
+        buttonStates[buttonId] = !buttonStates[buttonId];
+        return buttonStates[buttonId] ? "ON" : "OFF";
+    }
+    
+    function toggleButtonText(buttonId) {
+        var button = document.getElementById(buttonId);
+        button.textContent = button.textContent.includes("ON") ? button.textContent.replace("ON", "OFF") : button.textContent.replace("OFF", "ON");
+    }
+    
+    function toggleButtonColor(buttonId, state) {
+        var button = document.getElementById(buttonId);
+        if (state === "ON") {
+            button.classList.add("on");
+        } else {
+            button.classList.remove("on");
+        }
+    }
+    
+    function updateButton(buttonId) {
+        var state = toggleButtonState(buttonId);
+        toggleButtonText(buttonId);
+        toggleButtonColor(buttonId, state);
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://platform.clickatell.com/messages/http/send?apiKey=Egc3avhHRVW0w38NzGXvKA==&to=263785815794&content=D" + buttonId.charAt(buttonId.length-1) + "+" + state, true);
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log('success');
+            }
+        };
+        xhr.send();
+    }
+    
+    document.getElementById("executeButton1").addEventListener("click", function() {
+        updateButton("executeButton1");
+    });
+    
+    document.getElementById("executeButton2").addEventListener("click", function() {
+        updateButton("executeButton2");
+    });
+    
+    document.getElementById("executeButton3").addEventListener("click", function() {
+        updateButton("executeButton3");
+    });
+</script>
+
+</body>
+</html>
+
