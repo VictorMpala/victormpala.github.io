@@ -1,0 +1,451 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#232844",
+            "on-primary": "#00363e",
+            "surface-variant": "#2d3350",
+            "outline": "#889395",
+            "on-secondary": "#003824",
+            "tertiary-container": "#803ff1",
+            "primary-container": "#007585",
+            "on-primary-fixed-variant": "#004e5a",
+            "error": "#ffb4ab",
+            "on-secondary-container": "#003925",
+            "on-primary-fixed": "#001f25",
+            "secondary": "#54dea4",
+            "primary-fixed-dim": "#7ed3e5",
+            "tertiary": "#d2bbff",
+            "on-secondary-fixed-variant": "#005236",
+            "inverse-surface": "#dde1ff",
+            "inverse-primary": "#006877",
+            "outline-variant": "#3e484b",
+            "on-tertiary": "#3f008e",
+            "on-error-container": "#ffdad6",
+            "surface-container-low": "#141a35",
+            "on-tertiary-fixed-variant": "#5a00c6",
+            "on-tertiary-fixed": "#25005a",
+            "surface-container": "#181e39",
+            "surface": "#0b112c",
+            "on-error": "#690005",
+            "primary-fixed": "#a2eeff",
+            "tertiary-fixed-dim": "#d2bbff",
+            "inverse-on-surface": "#292f4b",
+            "error-container": "#93000a",
+            "on-primary-container": "#c2f4ff",
+            "surface-bright": "#323854",
+            "surface-tint": "#7ed3e5",
+            "secondary-fixed": "#74fbbf",
+            "background": "#0b112c",
+            "tertiary-fixed": "#eaddff",
+            "on-tertiary-container": "#f2e8ff",
+            "secondary-fixed-dim": "#54dea4",
+            "surface-dim": "#0b112c",
+            "on-secondary-fixed": "#002113",
+            "secondary-container": "#00ae78",
+            "on-background": "#dde1ff",
+            "surface-container-lowest": "#060c27",
+            "primary": "#7ed3e5",
+            "surface-container-highest": "#2d3350",
+            "on-surface-variant": "#bec8cb",
+            "on-surface": "#dde1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .nebula-glow {
+      background: radial-gradient(circle at 50% 50%, rgba(128, 63, 241, 0.15) 0%, rgba(0, 117, 133, 0.05) 50%, transparent 100%);
+    }
+    .data-veil {
+      background: linear-gradient(135deg, rgba(128, 63, 241, 0.1) 0%, rgba(0, 117, 133, 0.1) 100%);
+      filter: blur(120px);
+    }
+    .canvas-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .perspective-card {
+      perspective: 1000px;
+    }
+    .perspective-card-inner {
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
+    .perspective-card:hover .perspective-card-inner {
+      transform: rotateX(5deg) rotateY(5deg) translateZ(20px);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar Section -->
+<nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-cyan-900/20">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<a class="text-xl font-bold tracking-tighter text-white font-headline" href="{{DATA:SCREEN:SCREEN_4}}">Bitlogic</a>
+<div class="hidden md:flex items-center space-x-8 font-headline text-sm tracking-wide uppercase">
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_2}}">About</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_6}}">Expertise</a>
+<a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="{{DATA:SCREEN:SCREEN_9}}">Partners</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_5}}">Contact</a>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold px-6 py-2 rounded-xl scale-95 active:scale-90 duration-200 transition-all">
+        Get Started
+      </button>
+</div>
+</nav>
+<main class="relative pt-32 overflow-hidden">
+<!-- Background Texture -->
+<div class="absolute inset-0 -z-10 overflow-hidden">
+<div class="data-veil absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full"></div>
+<div class="data-veil absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full opacity-50"></div>
+</div>
+<!-- Hero Section -->
+<section class="px-8 md:px-12 max-w-7xl mx-auto mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="text-secondary font-label text-xs tracking-[0.2em] uppercase mb-4 block">Strategic Alignment</span>
+<h1 class="font-headline text-6xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+            Dedicated <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Partnerships</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-xl leading-relaxed mb-10">
+            We don't just provide services; we integrate into your ecosystem. Our philosophy centers on creating kinetic synergies that propel both organizations toward a singular technological north star.
+          </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold transition-all hover:shadow-[0_0_20px_rgba(126,211,229,0.4)]">
+              Partner With Us
+            </button>
+<button class="bg-surface-variant/20 backdrop-blur-md px-8 py-4 rounded-xl font-bold border border-outline-variant/15 hover:bg-surface-variant/30 transition-all">
+              View Framework
+            </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square bg-surface-container-low rounded-[2rem] overflow-hidden border border-outline-variant/15 shadow-2xl relative">
+<img class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="Modern collaborative workspace with team members discussing strategy around a sleek digital interface in a high-tech dark aesthetic environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr5mKzYqXZbrFDAkbgSaaDLfamh8bPa97FR4Zw1SbW6IY-wDi4BGdOcHeX_tkMAjfCDgyIC-TzXSPpykCPzFdn7W_cSShg-KGi2yxZEGxJlZK-dBL6hpupM9n8d5AFqkx_ovyIpm0DB5EpTqy8XOSEEbR6D8sErYCDkR6yDT6ZowimDNW5-Kuh7DwexLjykVn2buU4ITs5RtYScivpW_SIoZbuNFlnUdFRW4qrkoIojsMTAa5_cJLS3k06eqjBs9IiqvSy5sa6i0nj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 p-6 bg-surface-container-highest/60 backdrop-blur-xl rounded-xl border border-white/5">
+<p class="text-primary font-headline text-lg font-bold">120+ Global Alliances</p>
+<p class="text-on-surface-variant text-sm">Building the future of decentralized logic.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Partner Grid / Ecosystem Visualization -->
+<section class="bg-surface-container-low py-24 relative overflow-hidden">
+<div class="canvas-container" id="ecosystem-canvas"></div>
+<div class="px-8 md:px-12 max-w-7xl mx-auto relative z-10">
+<div class="mb-16">
+<h2 class="font-headline text-3xl font-bold text-white mb-4">Our Ecosystem</h2>
+<div class="w-24 h-1 bg-gradient-to-r from-primary to-transparent"></div>
+</div>
+<!-- Bento Grid for Partners -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Partner Card -->
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-primary">hub</span>
+<span class="font-headline font-bold text-xl tracking-tighter">NEXUS</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-tertiary">deployed_code</span>
+<span class="font-headline font-bold text-xl tracking-tighter">QUANTUM</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-secondary">cloud_done</span>
+<span class="font-headline font-bold text-xl tracking-tighter">STRATUS</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-primary">security</span>
+<span class="font-headline font-bold text-xl tracking-tighter">AEGIS</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-tertiary">database</span>
+<span class="font-headline font-bold text-xl tracking-tighter">CORE</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-primary">rocket_launch</span>
+<span class="font-headline font-bold text-xl tracking-tighter">VELOCITY</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-secondary">insights</span>
+<span class="font-headline font-bold text-xl tracking-tighter">VISION</span>
+</div>
+</div>
+<div class="group bg-surface-container-highest/30 backdrop-blur-sm aspect-video flex items-center justify-center rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all duration-500 hover:bg-surface-container-highest">
+<div class="flex items-center gap-3 opacity-60 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-tertiary">api</span>
+<span class="font-headline font-bold text-xl tracking-tighter">SYNAPSE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Success Stories -->
+<section class="px-8 md:px-12 max-w-7xl mx-auto py-32">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<span class="text-tertiary font-label text-xs tracking-[0.2em] uppercase mb-4 block">Proven Results</span>
+<h2 class="font-headline text-4xl md:text-5xl font-bold text-white leading-tight">Shared success is the only true <span class="text-primary italic">metric.</span></h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Story Card 1 -->
+<div class="relative group">
+<div class="absolute inset-0 bg-tertiary-container/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative bg-surface-container-low p-10 rounded-[2rem] border border-outline-variant/15 h-full flex flex-col">
+<span class="material-symbols-outlined text-tertiary text-5xl mb-8" data-weight="fill">format_quote</span>
+<p class="text-xl italic text-on-surface leading-relaxed mb-8 flex-grow">
+              "Bitlogic's approach to partnership transformed our legacy infrastructure. They didn't just hand over a solution; they evolved our entire engineering culture through deep-tier collaboration."
+            </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a middle-aged male executive with a confident expression and sharp suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv4FA3X6z9aEBrmmkGQDMs9MJgRPUoYC_0fqi8_Eo26OnXBjAlc16jXeOSH-wbHQ571PkKX1dYc4iSuf_WwCnrJZJLt9DEZgBKSyyZNSEv8HJgiebv1YGYREZmXgYJ4_jR5UaDmz0ypNpuprJgxsW6SyIU5GOJZQAQzSJBBGOmfn3GJUhKgqe-cHJb1SEaPpbBkRYGN71h7aukVqhWTlWUibWk84efTJJwr3YwNloxccwHYpUaU5FVrxmSB_5X4yluvzo77Y2dOzQW"/>
+</div>
+<div>
+<p class="font-bold text-white">Marcus Thorne</p>
+<p class="text-sm text-on-surface-variant uppercase tracking-wider">CTO, Nexus Global</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Story Card 2 -->
+<div class="relative group">
+<div class="absolute inset-0 bg-primary-container/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<div class="relative bg-surface-container-low p-10 rounded-[2rem] border border-outline-variant/15 h-full flex flex-col">
+<span class="material-symbols-outlined text-primary text-5xl mb-8" data-weight="fill">format_quote</span>
+<p class="text-xl italic text-on-surface leading-relaxed mb-8 flex-grow">
+              "The strategic alignment between our teams was instantaneous. Bitlogic Technologies operates with a level of precision that is rare in the enterprise software world. A true force multiplier."
+            </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high border border-secondary/30">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a woman in her late 30s with a focused and intelligent look, minimalist office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX4skFyK4v2zWPp0HEPXp3siEsdLgwDFPzdOStYO4tjIQ4egcARgTgzkq1Zel7WnKvdevtZTXyGnCn07cEkfg6IvTsNaUBqP9xompfuxu-CMnQP5TkRCHirae_Q7eQ66l68-jXEyUiRtbBo-_6yA-_hIKG4ID9Vp47jnmYWnEG8FTS_1_HaGpUxEc7YfLQeaHeV4dDhwSeBinTQavBRg_sqXlxz--PGVfV7bA_qsGHdzPnYB3q7H4FmCfUYcpgPBSWN8ejhnXEL-kb"/>
+</div>
+<div>
+<p class="font-bold text-white">Elena Rodriguez</p>
+<p class="text-sm text-on-surface-variant uppercase tracking-wider">VP of Innovation, Stratus AI</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Collaborative Tiers -->
+<section class="px-8 md:px-12 max-w-7xl mx-auto mb-32">
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container-lowest p-12 rounded-[3rem] border border-outline-variant/15 overflow-hidden relative">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary-container/20 blur-[100px] -mr-48 -mt-48"></div>
+<div class="relative z-10 text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline text-4xl font-bold text-white mb-6">Partnership Framework</h2>
+<p class="text-on-surface-variant">Our tiered approach ensures every alliance receives the precise level of architectural focus required for success.</p>
+</div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tier 1 -->
+<div class="perspective-card h-full">
+<div class="perspective-card-inner bg-surface/40 backdrop-blur-lg p-8 rounded-2xl border border-white/5 h-full">
+<div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">bolt</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-white mb-4">Agile Integration</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Rapid deployment partnerships focused on specialized technical execution and accelerated time-to-market.</p>
+</div>
+</div>
+<!-- Tier 2 -->
+<div class="perspective-card h-full">
+<div class="perspective-card-inner bg-surface/40 backdrop-blur-lg p-8 rounded-2xl border border-primary/30 shadow-[0_0_40px_rgba(126,211,229,0.1)] h-full">
+<div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-white mb-4">Strategic Core</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Full-lifecycle collaboration involving shared R&amp;D, structural logic design, and platform-level co-creation.</p>
+</div>
+</div>
+<!-- Tier 3 -->
+<div class="perspective-card h-full">
+<div class="perspective-card-inner bg-surface/40 backdrop-blur-lg p-8 rounded-2xl border border-white/5 h-full">
+<div class="w-12 h-12 bg-tertiary/20 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-tertiary">lan</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-white mb-4">Ecosystem Anchor</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Reserved for foundational alliances that shape the Bitlogic technology roadmap and industry standards.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section -->
+<footer class="w-full pt-16 pb-8 bg-slate-950 bg-gradient-to-t from-slate-900 to-transparent">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto font-body text-sm leading-relaxed">
+<div class="col-span-1 md:col-span-1">
+<a class="text-lg font-black text-white mb-6 block" href="{{DATA:SCREEN:SCREEN_4}}">Bitlogic</a>
+<p class="text-slate-500 mb-8">Architecting the next generation of kinetic digital experiences.</p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Software Reselling</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Careers</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Documentation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-sm">hub</span></a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-sm">public</span></a>
+</div>
+</div>
+</div>
+<div class="mt-16 px-12 max-w-7xl mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-xs">© 2024 Bitlogic Technologies. All rights reserved.</p>
+<p class="text-slate-500 text-xs flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Systems Operational
+      </p>
+</div>
+</footer>
+<script>
+    // Three.js Ecosystem Visualization
+    const container = document.getElementById('ecosystem-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    const nodesCount = 40;
+    const nodes = [];
+    const nodeGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+    const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x7ed3e5 });
+    
+    for (let i = 0; i < nodesCount; i++) {
+      const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+      node.position.set(
+        (Math.random() - 0.5) * 15,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10
+      );
+      node.velocity = new THREE.Vector3(
+        (Math.random() - 0.5) * 0.01,
+        (Math.random() - 0.5) * 0.01,
+        (Math.random() - 0.5) * 0.01
+      );
+      nodes.push(node);
+      scene.add(node);
+    }
+
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x7ed3e5, transparent: true, opacity: 0.15 });
+    const lines = [];
+
+    camera.position.z = 10;
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Update node positions
+      nodes.forEach(node => {
+        node.position.add(node.velocity);
+        
+        // Bounce back
+        if (Math.abs(node.position.x) > 10) node.velocity.x *= -1;
+        if (Math.abs(node.position.y) > 6) node.velocity.y *= -1;
+        if (Math.abs(node.position.z) > 6) node.velocity.z *= -1;
+      });
+
+      // Simple line management (rebuild lines each frame for simplicity in this demo)
+      // For performance in a real app, use BufferGeometry and update positions
+      scene.children = scene.children.filter(child => child.type !== 'Line');
+      
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dist = nodes[i].position.distanceTo(nodes[j].position);
+          if (dist < 4) {
+            const points = [nodes[i].position, nodes[j].position];
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(geometry, lineMaterial);
+            scene.add(line);
+          }
+        }
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    animate();
+
+    // Subtle 3D Depth Card Tilt Effect logic
+    const cards = document.querySelectorAll('.perspective-card');
+    cards.forEach(card => {
+      const inner = card.querySelector('.perspective-card-inner');
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        inner.style.transform = `rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+      });
+    });
+  </script>
+</body></html>

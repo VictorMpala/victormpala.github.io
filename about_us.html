@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Bitlogic Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#232844",
+                        "on-primary": "#00363e",
+                        "surface-variant": "#2d3350",
+                        "outline": "#889395",
+                        "on-secondary": "#003824",
+                        "tertiary-container": "#803ff1",
+                        "primary-container": "#007585",
+                        "on-primary-fixed-variant": "#004e5a",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#003925",
+                        "on-primary-fixed": "#001f25",
+                        "secondary": "#54dea4",
+                        "primary-fixed-dim": "#7ed3e5",
+                        "tertiary": "#d2bbff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-surface": "#dde1ff",
+                        "inverse-primary": "#006877",
+                        "outline-variant": "#3e484b",
+                        "on-tertiary": "#3f008e",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#141a35",
+                        "on-tertiary-fixed-variant": "#5a00c6",
+                        "on-tertiary-fixed": "#25005a",
+                        "surface-container": "#181e39",
+                        "surface": "#0b112c",
+                        "on-error": "#690005",
+                        "primary-fixed": "#a2eeff",
+                        "tertiary-fixed-dim": "#d2bbff",
+                        "inverse-on-surface": "#292f4b",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#c2f4ff",
+                        "surface-bright": "#323854",
+                        "surface-tint": "#7ed3e5",
+                        "secondary-fixed": "#74fbbf",
+                        "background": "#0b112c",
+                        "tertiary-fixed": "#eaddff",
+                        "on-tertiary-container": "#f2e8ff",
+                        "secondary-fixed-dim": "#54dea4",
+                        "surface-dim": "#0b112c",
+                        "on-secondary-fixed": "#002113",
+                        "secondary-container": "#00ae78",
+                        "on-background": "#dde1ff",
+                        "surface-container-lowest": "#060c27",
+                        "primary": "#7ed3e5",
+                        "surface-container-highest": "#2d3350",
+                        "on-surface-variant": "#bec8cb",
+                        "on-surface": "#dde1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(128, 63, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 117, 133, 0.15) 0%, transparent 50%);
+        }
+        #three-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div id="three-canvas-container"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-cyan-900/20 flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="text-xl font-bold tracking-tighter text-white font-headline cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_4}}'">Bitlogic</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-cyan-400 border-b-2 border-cyan-400 pb-1" href="{{DATA:SCREEN:SCREEN_2}}">About</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_6}}">Expertise</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_9}}">Partners</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_5}}">Contact</a>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-headline font-bold text-sm hover:scale-105 active:scale-95 transition-all duration-300">
+        Get Started
+    </button>
+</nav>
+<main class="relative pt-32">
+<!-- Hero Section -->
+<section class="px-8 md:px-24 mb-32">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block px-4 py-1 rounded-full bg-surface-container-high border border-outline-variant/15 text-primary text-xs font-label uppercase tracking-widest mb-6">Our DNA</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-8 leading-tight">
+                    Bridging <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">Innovation</span> <br/>&amp; Human Reality.
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-10">
+                    Bitlogic Technologies was founded on a simple yet radical premise: software shouldn't just function—it should elevate. We blend elite engineering with cosmic vision to build the future of digital infrastructure.
+                </p>
+</div>
+<div class="lg:col-span-5 relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-tertiary/20 blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+<img class="relative w-full aspect-square object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" data-alt="Abstract deep space nebula with glowing cyan and purple particle networks and light trails in high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwHh9-x0AMdAsLGTVsypvJr4m_gsgGIOdRwqDvNJnH7UwBeBmhKrLmKdGun8EXuJItcuhypIQubDOKfYfsIRO011vmiqYZuk8IsAsTQqeo54-O6TgXHQ2qY4t0M1gpGuU22BoVsPbmF64Ihzjpm5ED1Ylcce9fIHdwX80gYtx9EDe31cjca8f9yHhRDZJMOcsUB1tCWGfWiO8A_TG-tjty8Eefgd1x9RrMkeJc_TgBqOfSudvjg-Do3Uju6GeFHYb6nO4aNxCi98Yb"/>
+</div>
+</div>
+</section>
+<!-- Why Trust Us: Asymmetric Bento Grid -->
+<section class="bg-surface-container-low/50 backdrop-blur-sm py-32 px-8 md:px-24">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-4">The Kinetic Blueprint</h2>
+<div class="w-24 h-1 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Feature -->
+<div class="reveal-card md:col-span-8 bg-surface-container-high p-12 rounded-xl border border-outline-variant/10 relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="rocket_launch">rocket_launch</span>
+<h3 class="font-headline text-3xl font-bold mb-4">Elite Engineering Culture</h3>
+<p class="text-on-surface-variant text-lg max-w-xl">We don't hire developers; we curate architects. Our team is composed of the top 1% of engineering talent focused on creating resilient, scalable, and beautiful systems that defy market standards.</p>
+</div>
+<img class="absolute right-[-10%] bottom-[-10%] w-1/2 opacity-10 group-hover:opacity-20 transition-opacity duration-500 transform rotate-12" data-alt="Highly detailed server room with glowing blue LED strips and dark metallic surfaces in a futuristic datacenter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7OjgCCe7ywZseecbnByuTvmII33Uh-L4LdENd4u2VvyqXVREP8jdA3Trc5MmiXIvsrFX1em-H1aCEpPjpOZq30T02PinUTHaGTKRGcum_BS73F1Lcd-4T7RVuyF2ijhQvpseSisqA89ede0WOf5BG6K39X6-mo91DAV7QnKHKPfDpq6My8iqs3cBbiMpc0MJGAd-aK3jPLJC4FlFFdYpCiiE8NoklfCvXJgTaDognkBhxE8mTs0qTYzLm5ojICdW-WJOJbiGgf1fp"/>
+</div>
+<!-- Small Feature -->
+<div class="reveal-card md:col-span-4 bg-surface-container-highest p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-secondary mb-6" data-icon="security">security</span>
+<h3 class="font-headline text-xl font-bold mb-2">Zero-Trust Integrity</h3>
+<p class="text-on-surface-variant text-sm">Security isn't a feature; it's the foundation of every line of code we write.</p>
+</div>
+</div>
+<!-- Small Feature -->
+<div class="reveal-card md:col-span-4 bg-surface-container-highest p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl text-tertiary mb-6" data-icon="neurology">neurology</span>
+<h3 class="font-headline text-xl font-bold mb-2">Cognitive UX</h3>
+<p class="text-on-surface-variant text-sm">Interfaces designed to align with human neural patterns for effortless interaction.</p>
+</div>
+</div>
+<!-- Medium Feature -->
+<div class="reveal-card md:col-span-8 bg-surface-variant/40 backdrop-blur-md p-12 rounded-xl border border-outline-variant/10 group">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<h3 class="font-headline text-2xl font-bold mb-4">The Trust Protocol</h3>
+<p class="text-on-surface-variant mb-6">Our partnerships are built on radical transparency. Real-time observability and open-channel communication ensure you're never in the dark.</p>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface-container-lowest rounded-full text-xs font-label text-primary">99.9% UPTIME</div>
+<div class="px-4 py-2 bg-surface-container-lowest rounded-full text-xs font-label text-secondary">ISO 27001</div>
+</div>
+</div>
+<div class="w-full md:w-48 h-48 rounded-full overflow-hidden border-2 border-outline-variant/20 group-hover:border-primary transition-colors duration-500">
+<img class="w-full h-full object-cover grayscale" data-alt="Close up of a high-tech optical sensor lens with glowing reflections of digital interfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQm6NLpbsWEmvAihhOqAQ8VbnRXiaVdIQG30zfN6E3Vdu51nYnBjN-I8dVHiu5A1ldCE2N3IRU9F_O9ePwivlHSt9E2scR9SxOIDfpQXzD4lvdgXklnxlqSTdx1OB-RsjGrs3Bn3YnEw88uSVUs6oHsFFa82DpWRrXULR1LklzC67m57DEbLbQ6H0oiVc9mawau-XUs8VLguHKHzrQJNGj49eN92RENYnUNSO4aCAvUe5vUMkvDJshEDre0Wy-gzj6KAF3OsnJty5c"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Journey: Milestone Timeline -->
+<section class="py-32 px-8 md:px-24 relative overflow-hidden" id="timeline-section">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-24">
+<h2 class="font-headline text-4xl font-bold mb-4">Our Cosmic Path</h2>
+<p class="text-on-surface-variant">The milestones that shaped Bitlogic's evolution.</p>
+</div>
+<div class="relative">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-gradient-to-b from-primary via-tertiary to-transparent opacity-30" id="timeline-line"></div>
+<!-- Milestone 1 -->
+<div class="relative mb-32 md:flex items-center justify-between group milestone-item">
+<div class="md:w-5/12 text-right hidden md:block">
+<h4 class="font-headline text-xl font-bold text-primary mb-2">2018</h4>
+<p class="text-on-surface-variant text-sm">Bitlogic core logic established in a small Silicon Valley lab.</p>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_rgba(126,211,229,0.8)] z-10 timeline-dot"></div>
+<div class="md:w-5/12 ml-auto">
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/10 transition-transform duration-500 timeline-card">
+<h3 class="font-headline text-lg font-bold mb-2">The Genesis Event</h3>
+<p class="text-sm leading-relaxed text-on-surface-variant">First successful deployment of our proprietary Kinetic Engine, processing 1M+ transactions per second with zero latency.</p>
+<div class="md:hidden mt-4 text-primary font-bold">2018</div>
+</div>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="relative mb-32 md:flex items-center justify-between group milestone-item">
+<div class="md:w-5/12">
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/10 transition-transform duration-500 timeline-card">
+<h3 class="font-headline text-lg font-bold mb-2">Global Expansion</h3>
+<p class="text-sm leading-relaxed text-on-surface-variant">Expansion into European and Asian markets, establishing our first carbon-neutral high-density data cluster.</p>
+<div class="md:hidden mt-4 text-tertiary font-bold">2021</div>
+</div>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-tertiary rounded-full shadow-[0_0_15px_rgba(210,187,255,0.8)] z-10 timeline-dot"></div>
+<div class="md:w-5/12 hidden md:block pl-12">
+<h4 class="font-headline text-xl font-bold text-tertiary mb-2">2021</h4>
+<p class="text-on-surface-variant text-sm">Scaling the nebula across three continents.</p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="relative md:flex items-center justify-between group milestone-item">
+<div class="md:w-5/12 text-right hidden md:block">
+<h4 class="font-headline text-xl font-bold text-secondary mb-2">Present</h4>
+<p class="text-on-surface-variant text-sm">Leading the charge in AI-driven architectural autonomy.</p>
+</div>
+<div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-secondary rounded-full shadow-[0_0_15px_rgba(84,222,164,0.8)] z-10 timeline-dot"></div>
+<div class="md:w-5/12 ml-auto">
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/10 transition-transform duration-500 timeline-card">
+<h3 class="font-headline text-lg font-bold mb-2">The Autonomous Era</h3>
+<p class="text-sm leading-relaxed text-on-surface-variant">Integrating neural-net optimizations into every client infrastructure, reducing operational overhead by 40% globally.</p>
+<div class="md:hidden mt-4 text-secondary font-bold">Present</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vision Statement -->
+<section class="py-32 bg-slate-950/80 backdrop-blur-md overflow-hidden relative">
+<div class="absolute inset-0 opacity-20">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent scale-150"></div>
+</div>
+<div class="max-w-4xl mx-auto px-8 text-center relative z-10">
+<span class="material-symbols-outlined text-6xl text-primary/30 mb-8" data-icon="format_quote">format_quote</span>
+<h2 class="font-headline text-3xl md:text-5xl font-light italic leading-relaxed text-white">
+                "We don't just build software. We build the <span class="text-primary font-bold not-italic">digital gravity</span> that pulls potential into existence."
+            </h2>
+<div class="mt-12 flex flex-col items-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-primary">
+<img class="w-full h-full object-cover grayscale" data-alt="Professional portrait of a visionary tech leader with short hair and serious expression in moody cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA5EaRzKSAXUqZNn-H_PcYOKPNvgwuo69DUbNBjN07lc6VDmXnQgfOCP_XjBrUB_rNrV5WUTA6kGmuwCT9LrT2536oboz1a1FZRjZ1zwfmLr4xYVI7qVvCpf8trSQ5v8oeKQEI86pQuSkgSbbdPpr3lBTUpYcLp2CiQCIxyuyWOZoAsSVUVdlx_hJ9pa8Lu2xOuHNgLGVm_fIIspmJZnAw_diPKBBC9-PteyicH8_kNWSB2-cQpRd8jp5rgmJzGPfllYApw35GHP9Z"/>
+</div>
+<p class="font-headline font-bold text-white tracking-widest uppercase text-xs">Aria Sterling</p>
+<p class="text-primary text-[10px] font-label uppercase tracking-[0.2em] mt-1">Founder &amp; Chief Architect</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-slate-950 font-['Inter'] text-sm leading-relaxed relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto relative z-10">
+<div class="md:col-span-1">
+<div class="text-lg font-black text-white mb-6 cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_4}}'">Bitlogic</div>
+<p class="text-slate-500 mb-8">Architecting the future through elite engineering and kinetic innovation.</p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-cyan-400 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="share">share</span></a>
+<a class="text-slate-500 hover:text-cyan-400 transition-colors" href="#"><span class="material-symbols-outlined" data-icon="language">language</span></a>
+</div>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-white font-bold mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-white font-bold mb-6">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Software Reselling</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Custom Build</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors" href="#">Cloud Migration</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h4 class="text-white font-bold mb-6">Updates</h4>
+<p class="text-slate-500 mb-4">Join our orbit for the latest in tech.</p>
+<div class="flex">
+<input class="bg-surface-container-lowest border-none rounded-l-lg text-xs p-3 w-full focus:ring-1 focus:ring-primary" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary px-4 rounded-r-lg hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-16 px-12 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 border-t border-outline-variant/5 pt-8">
+<p class="text-slate-500">© 2024 Bitlogic Technologies. All rights reserved.</p>
+<div class="flex gap-8">
+<span class="text-slate-500 text-[10px] font-label tracking-widest uppercase">System Status: Optimal</span>
+<span class="text-slate-500 text-[10px] font-label tracking-widest uppercase">Latency: 12ms</span>
+</div>
+</div>
+</footer>
+<script>
+    // Registration of GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Three.js Background Implementation
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('three-canvas-container').appendChild(renderer.domElement);
+
+    // Create a particle field
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 2500;
+    const posArray = new Float32Array(particlesCount * 3);
+
+    for(let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.005,
+        color: '#7ed3e5',
+        transparent: true,
+        opacity: 0.5,
+        blending: THREE.AdditiveBlending
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 3;
+
+    // Mouse Interaction for 3D Background
+    let mouseX = 0;
+    let mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+    });
+
+    const animate = () => {
+        requestAnimationFrame(animate);
+        particlesMesh.rotation.y += 0.001;
+        particlesMesh.rotation.x += 0.0005;
+
+        // Smooth camera follow
+        camera.position.x += (mouseX - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        camera.lookAt(scene.position);
+
+        renderer.render(scene, camera);
+    };
+    animate();
+
+    // Window Resize Handling
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // GSAP Animations for Content
+    gsap.from("nav", {
+        y: -100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out"
+    });
+
+    gsap.from("h1 span", {
+        backgroundPosition: "200% center",
+        duration: 3,
+        ease: "none",
+        repeat: -1
+    });
+
+    // Animate Bento Grid Cards on Scroll
+    gsap.to(".reveal-card", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".reveal-card",
+            start: "top 85%",
+        }
+    });
+
+    // Animate Cosmic Path Timeline
+    const timelineItems = gsap.utils.toArray('.milestone-item');
+    timelineItems.forEach((item, i) => {
+        const dot = item.querySelector('.timeline-dot');
+        const card = item.querySelector('.timeline-card');
+        
+        // Dot entry animation
+        gsap.from(dot, {
+            scale: 0,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: dot,
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Card physics-based entry
+        gsap.from(card, {
+            x: i % 2 === 0 ? 100 : -100,
+            opacity: 0,
+            scale: 0.8,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.75)",
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            }
+        });
+    });
+
+    // Timeline Line Progress
+    gsap.from("#timeline-line", {
+        scaleY: 0,
+        transformOrigin: "top center",
+        scrollTrigger: {
+            trigger: "#timeline-section",
+            start: "top center",
+            end: "bottom center",
+            scrub: true
+        }
+    });
+
+</script>
+</body></html>

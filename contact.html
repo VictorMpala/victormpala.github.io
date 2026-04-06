@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | Bitlogic Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#232844",
+                    "on-primary": "#00363e",
+                    "surface-variant": "#2d3350",
+                    "outline": "#889395",
+                    "on-secondary": "#003824",
+                    "tertiary-container": "#803ff1",
+                    "primary-container": "#007585",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#003925",
+                    "on-primary-fixed": "#001f25",
+                    "secondary": "#54dea4",
+                    "primary-fixed-dim": "#7ed3e5",
+                    "tertiary": "#d2bbff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-surface": "#dde1ff",
+                    "inverse-primary": "#006877",
+                    "outline-variant": "#3e484b",
+                    "on-tertiary": "#3f008e",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#141a35",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-container": "#181e39",
+                    "surface": "#0b112c",
+                    "on-error": "#690005",
+                    "primary-fixed": "#a2eeff",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "inverse-on-surface": "#292f4b",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#c2f4ff",
+                    "surface-bright": "#323854",
+                    "surface-tint": "#7ed3e5",
+                    "secondary-fixed": "#74fbbf",
+                    "background": "#0b112c",
+                    "tertiary-fixed": "#eaddff",
+                    "on-tertiary-container": "#f2e8ff",
+                    "secondary-fixed-dim": "#54dea4",
+                    "surface-dim": "#0b112c",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-container": "#00ae78",
+                    "on-background": "#dde1ff",
+                    "surface-container-lowest": "#060c27",
+                    "primary": "#7ed3e5",
+                    "surface-container-highest": "#2d3350",
+                    "on-surface-variant": "#bec8cb",
+                    "on-surface": "#dde1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(128, 63, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 117, 133, 0.15) 0%, transparent 50%);
+        }
+        
+        /* Floating logic animation for form */
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .form-glow-focus:focus-within {
+            box-shadow: 0 0 40px -10px rgba(126, 211, 229, 0.3);
+            border-color: rgba(126, 211, 229, 0.4);
+        }
+        
+        #canvas-map-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl shadow-2xl shadow-cyan-900/20 flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<a class="text-xl font-bold tracking-tighter text-white font-headline" href="{{DATA:SCREEN:SCREEN_4}}">Bitlogic</a>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_2}}">About</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_6}}">Expertise</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-slate-300 hover:text-white transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_9}}">Partners</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase text-cyan-400 border-b-2 border-cyan-400 pb-1" href="{{DATA:SCREEN:SCREEN_5}}">Contact</a>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-headline font-bold text-sm hover:opacity-90 transition-all duration-300 hover:scale-95 active:scale-90">
+            Get Started
+        </button>
+</nav>
+<main class="pt-32 pb-20 min-h-screen kinetic-nebula-bg">
+<!-- Hero Section Header -->
+<section class="max-w-7xl mx-auto px-12 mb-16">
+<div class="max-w-2xl">
+<span class="font-label text-primary uppercase tracking-[0.2em] text-xs font-semibold mb-4 block">Connect with our engineers</span>
+<h1 class="font-headline text-display-lg font-bold leading-tight text-white mb-6">
+                    Let's Build the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future of Logic</span>
+</h1>
+</div>
+</section>
+<!-- Main Content Grid -->
+<section class="max-w-7xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Contact Form (Glassmorphism with interactive states) -->
+<div class="lg:col-span-7 bg-surface-variant/40 backdrop-blur-2xl p-10 rounded-full border border-outline-variant/10 shadow-2xl relative overflow-hidden group transition-all duration-700 form-glow-focus">
+<!-- Abstract Accent -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-tertiary-container/10 rounded-full blur-3xl group-hover:bg-tertiary-container/20 transition-all duration-500"></div>
+<div class="absolute -bottom-24 -left-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+<form class="relative z-10 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2 group/input">
+<label class="font-label text-on-surface-variant text-[10px] uppercase tracking-widest px-1 transition-colors group-focus-within/input:text-primary">Full Name</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 text-on-surface placeholder:text-outline/40 focus:ring-2 focus:ring-primary/50 focus:bg-surface-container-high transition-all duration-300" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2 group/input">
+<label class="font-label text-on-surface-variant text-[10px] uppercase tracking-widest px-1 transition-colors group-focus-within/input:text-primary">Corporate Email</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 text-on-surface placeholder:text-outline/40 focus:ring-2 focus:ring-primary/50 focus:bg-surface-container-high transition-all duration-300" placeholder="j.doe@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2 group/input">
+<label class="font-label text-on-surface-variant text-[10px] uppercase tracking-widest px-1 transition-colors group-focus-within/input:text-primary">Subject of Interest</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:bg-surface-container-high transition-all duration-300 appearance-none">
+<option>Software Reselling Inquiry</option>
+<option>System Architecture Consultation</option>
+<option>Cloud Infrastructure Optimization</option>
+<option>Other Technological Challenge</option>
+</select>
+</div>
+<div class="space-y-2 group/input">
+<label class="font-label text-on-surface-variant text-[10px] uppercase tracking-widest px-1 transition-colors group-focus-within/input:text-primary">Detailed Message</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl p-4 text-on-surface placeholder:text-outline/40 focus:ring-2 focus:ring-primary/50 focus:bg-surface-container-high transition-all duration-300 resize-none" placeholder="How can our logic empower your vision?" rows="5"></textarea>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold py-5 rounded-xl text-lg hover:shadow-[0_0_30px_-5px_rgba(126,211,229,0.4)] transition-all duration-300 hover:scale-[1.01] active:scale-95 relative overflow-hidden" type="submit">
+<span class="relative z-10">Transmit Inquiry</span>
+<div class="absolute inset-0 bg-white/10 translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000 skew-x-12"></div>
+</button>
+</form>
+</div>
+<!-- Office Details -->
+<div class="lg:col-span-5 space-y-12">
+<!-- Address Card -->
+<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/5 group hover:border-primary/30 transition-all duration-500">
+<div class="flex items-start space-x-6">
+<div class="bg-primary-container/20 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+</div>
+<div class="space-y-2">
+<h3 class="font-headline text-xl font-semibold text-white">Silicon Valley Nebula HQ</h3>
+<p class="font-body text-on-surface-variant leading-relaxed">
+                                4092 Kinetic Drive, Suite 800<br/>
+                                Palo Alto, CA 94304<br/>
+                                United States
+                            </p>
+</div>
+</div>
+</div>
+<!-- Contact Channels -->
+<div class="space-y-6">
+<div class="flex items-center space-x-6 p-6 rounded-xl bg-surface-container-lowest/50 hover:bg-surface-container-high transition-all duration-300 group">
+<div class="bg-secondary/10 p-3 rounded-lg group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary">call</span>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Global Support</p>
+<p class="font-headline text-lg font-medium text-white group-hover:text-secondary transition-colors">+1 (650) BIT-LOGIC</p>
+</div>
+</div>
+<div class="flex items-center space-x-6 p-6 rounded-xl bg-surface-container-lowest/50 hover:bg-surface-container-high transition-all duration-300 group">
+<div class="bg-tertiary/10 p-3 rounded-lg group-hover:bg-tertiary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary">alternate_email</span>
+</div>
+<div>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Direct Communication</p>
+<p class="font-headline text-lg font-medium text-white group-hover:text-tertiary transition-colors">nexus@bitlogic.tech</p>
+</div>
+</div>
+</div>
+<!-- Operating Hours (Asymmetric Layout element) -->
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<p class="font-label text-xs text-on-surface-variant mb-4">Availability Horizon</p>
+<div class="grid grid-cols-2 gap-4 text-sm font-body">
+<div class="text-on-surface">Mon — Fri</div>
+<div class="text-primary text-right">08:00 — 20:00 PST</div>
+<div class="text-on-surface">Sat — Sun</div>
+<div class="text-outline text-right">Emergency Support Only</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Three.js Stylized Data-Map Section -->
+<section class="max-w-7xl mx-auto px-12 mt-24">
+<div class="relative w-full h-[600px] rounded-[3rem] overflow-hidden border border-outline-variant/10 shadow-2xl bg-surface-container-lowest" id="canvas-map-container">
+<!-- Map Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none"></div>
+<div class="absolute top-12 left-12 z-20">
+<h4 class="font-headline text-2xl font-bold text-white mb-1">Global Logic Mesh</h4>
+<p class="text-xs text-primary uppercase tracking-[0.3em]">Live Node Status: Active</p>
+</div>
+<!-- Three.js Canvas Placeholder (Handled by Script) -->
+<div class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000" id="map-loader">
+<div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+</div>
+<!-- Map Marker UI overlaying the canvas -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer pointer-events-none">
+<div class="relative pointer-events-auto">
+<div class="absolute -inset-12 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+<div class="relative bg-surface/80 backdrop-blur-md p-3 rounded-full border border-primary/50 shadow-[0_0_30px_rgba(126,211,229,0.3)]">
+<span class="material-symbols-outlined text-primary text-5xl" data-weight="fill">hub</span>
+</div>
+<div class="absolute top-full mt-6 left-1/2 -translate-x-1/2 w-64 text-center bg-surface-container-high/95 backdrop-blur-xl p-4 rounded-2xl border border-primary/20 shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+<p class="font-headline text-white font-bold text-lg mb-1">HQ Command Nexus</p>
+<p class="font-body text-sm text-on-surface-variant">4092 Kinetic Drive, Palo Alto</p>
+<div class="mt-3 flex justify-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="text-[10px] text-secondary font-bold uppercase tracking-tighter">Real-time sync</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 bg-slate-950 bg-gradient-to-t from-slate-900 to-transparent">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+<div class="space-y-6">
+<a class="text-lg font-black text-white font-headline" href="{{DATA:SCREEN:SCREEN_4}}">Bitlogic</a>
+<p class="font-['Inter'] text-sm leading-relaxed text-slate-500">
+                    Engineered to solve the most complex data structures with kinetic efficiency and aesthetic precision.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-xs uppercase tracking-widest text-primary">Company</h4>
+<div class="flex flex-col space-y-2">
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_2}}">About Us</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="#">Careers</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="#">Press</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-xs uppercase tracking-widest text-primary">Solutions</h4>
+<div class="flex flex-col space-y-2">
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Software Reselling</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Systems Integration</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="{{DATA:SCREEN:SCREEN_6}}">Consultancy</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-label text-xs uppercase tracking-widest text-primary">Legal</h4>
+<div class="flex flex-col space-y-2">
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-sm leading-relaxed text-slate-500 hover:text-cyan-300 transition-colors" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-['Inter'] text-sm leading-relaxed text-slate-500">© 2024 Bitlogic Technologies. All rights reserved.</p>
+<div class="flex space-x-6">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-xl">public</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-xl">share</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-xl">terminal</span></a>
+</div>
+</div>
+</footer>
+<script>
+        // Three.js Map Initialization
+        const initMap = () => {
+            const container = document.getElementById('canvas-map-container');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Create a stylized 3D Grid / Data Map
+            const gridHelper = new THREE.GridHelper(20, 40, 0x007585, 0x141a35);
+            gridHelper.position.y = -2;
+            scene.add(gridHelper);
+
+            // Particle System for "Logic Nodes"
+            const particlesCount = 2000;
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 50;
+            }
+            
+            const particlesGeometry = new THREE.BufferGeometry();
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.05,
+                color: 0x7ed3e5,
+                transparent: true,
+                opacity: 0.5,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // Floating 3D Nodes (Abstracted Cities)
+            const nodeGeometry = new THREE.IcosahedronGeometry(0.2, 1);
+            const nodeMaterial = new THREE.MeshPhongMaterial({ 
+                color: 0x7ed3e5, 
+                wireframe: true,
+                emissive: 0x007585,
+                emissiveIntensity: 0.5
+            });
+
+            const nodes = [];
+            for(let i = 0; i < 12; i++) {
+                const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+                node.position.set(
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 10,
+                    (Math.random() - 0.5) * 20
+                );
+                scene.add(node);
+                nodes.push(node);
+            }
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0x7ed3e5, 2);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            camera.position.z = 12;
+            camera.position.y = 5;
+            camera.lookAt(0,0,0);
+
+            // Animation Loop
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+                mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+            });
+
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                particlesMesh.rotation.y += 0.001;
+                particlesMesh.rotation.x += 0.0005;
+                
+                nodes.forEach((node, index) => {
+                    node.rotation.y += 0.01;
+                    node.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
+                });
+
+                // Subtle tilt based on mouse
+                camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY * 2 + 5 - camera.position.y) * 0.05;
+                camera.lookAt(0, 0, 0);
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            // Handle Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        };
+
+        window.addEventListener('load', initMap);
+    </script>
+</body></html>

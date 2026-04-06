@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expertise | Bitlogic Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#232844",
+                    "on-primary": "#00363e",
+                    "surface-variant": "#2d3350",
+                    "outline": "#889395",
+                    "on-secondary": "#003824",
+                    "tertiary-container": "#803ff1",
+                    "primary-container": "#007585",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#003925",
+                    "on-primary-fixed": "#001f25",
+                    "secondary": "#54dea4",
+                    "primary-fixed-dim": "#7ed3e5",
+                    "tertiary": "#d2bbff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-surface": "#dde1ff",
+                    "inverse-primary": "#006877",
+                    "outline-variant": "#3e484b",
+                    "on-tertiary": "#3f008e",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-low": "#141a35",
+                    "on-tertiary-fixed-variant": "#5a00c6",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-container": "#181e39",
+                    "surface": "#0b112c",
+                    "on-error": "#690005",
+                    "primary-fixed": "#a2eeff",
+                    "tertiary-fixed-dim": "#d2bbff",
+                    "inverse-on-surface": "#292f4b",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#c2f4ff",
+                    "surface-bright": "#323854",
+                    "surface-tint": "#7ed3e5",
+                    "secondary-fixed": "#74fbbf",
+                    "background": "#0b112c",
+                    "tertiary-fixed": "#eaddff",
+                    "on-tertiary-container": "#f2e8ff",
+                    "secondary-fixed-dim": "#54dea4",
+                    "surface-dim": "#0b112c",
+                    "on-secondary-fixed": "#002113",
+                    "secondary-container": "#00ae78",
+                    "on-background": "#dde1ff",
+                    "surface-container-lowest": "#060c27",
+                    "primary": "#7ed3e5",
+                    "surface-container-highest": "#2d3350",
+                    "on-surface-variant": "#bec8cb",
+                    "on-surface": "#dde1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b112c;
+            color: #dde1ff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .glass-card {
+            background: rgba(45, 51, 80, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(62, 72, 75, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(126, 211, 229, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        .data-veil {
+            background: radial-gradient(circle at 50% 50%, #803ff1 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, #007585 0%, transparent 50%);
+            filter: blur(100px);
+            opacity: 0.15;
+            position: absolute;
+            z-index: -1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .three-canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        .group:hover .three-canvas-container {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-900/60 backdrop-blur-xl flex justify-between items-center px-8 py-4 max-w-full mx-auto shadow-2xl shadow-cyan-900/20">
+<div class="text-xl font-bold tracking-tighter text-white font-headline">Bitlogic</div>
+<div class="hidden md:flex items-center space-x-8 font-headline text-sm tracking-wide uppercase">
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="#">About</a>
+<a class="text-cyan-400 border-b-2 border-cyan-400 pb-1" href="#">Expertise</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="#">Partners</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-bold tracking-tight hover:scale-105 active:scale-95 transition-all duration-300 uppercase text-xs">
+            Get Started
+        </button>
+</nav>
+<main class="relative pt-32 pb-24 overflow-hidden">
+<!-- Kinetic Nebula Accents -->
+<div class="data-veil top-0 left-0 w-full h-[800px]"></div>
+<div class="data-veil bottom-0 right-0 w-3/4 h-[600px] rotate-180"></div>
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-7">
+<span class="text-primary font-headline tracking-[0.3em] uppercase text-xs mb-4 block">Core Capabilities</span>
+<h1 class="font-headline text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-white mb-8">
+                    Technological <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-secondary">Sovereignty</span>.
+                </h1>
+</div>
+<div class="lg:col-span-5 lg:pt-12">
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md border-l border-primary/20 pl-8">
+                    At Bitlogic, we don't just build software; we engineer digital ecosystems that define the next generation of industry standards. Our kinetic approach blends structural integrity with creative chaos.
+                </p>
+</div>
+</section>
+<!-- Expertise Bento Grid -->
+<section class="max-w-7xl mx-auto px-6 mb-40">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Systems Development -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-full p-8 glass-card" data-three-type="system">
+<div class="three-canvas-container" id="canvas-system"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">settings_input_component</span>
+<h3 class="font-headline text-3xl font-bold text-white mb-4">Systems Development</h3>
+<p class="text-on-surface-variant max-w-xl mb-8">Low-latency, high-availability architecture designed for scale. We build the backbone of modern enterprise operations using Rust, C++, and Go.</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-1 rounded-full bg-surface-container-highest text-xs font-medium text-primary">Embedded Systems</span>
+<span class="px-4 py-1 rounded-full bg-surface-container-highest text-xs font-medium text-primary">Distributed Computing</span>
+<span class="px-4 py-1 rounded-full bg-surface-container-highest text-xs font-medium text-primary">Microservices</span>
+</div>
+</div>
+</div>
+<!-- Mobile App Development -->
+<div class="md:col-span-4 group relative overflow-hidden p-8 glass-card rounded-full flex flex-col justify-between" data-three-type="mobile">
+<div class="three-canvas-container" id="canvas-mobile"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">phone_iphone</span>
+<h3 class="font-headline text-3xl font-bold text-white mb-4">Mobile Apps</h3>
+<p class="text-on-surface-variant">Native and cross-platform experiences that prioritize kinetic motion and biometric security.</p>
+</div>
+<div class="mt-8 border-t border-outline-variant/10 pt-6 relative z-10">
+<span class="text-xs font-label uppercase tracking-widest text-outline">Featured Stack</span>
+<p class="text-white font-medium mt-1">Flutter, Swift, Kotlin</p>
+</div>
+</div>
+<!-- Web Development -->
+<div class="md:col-span-4 group relative overflow-hidden p-8 glass-card rounded-full border-t-2 border-t-tertiary/20" data-three-type="web">
+<div class="three-canvas-container" id="canvas-web"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">desktop_cloud</span>
+<h3 class="font-headline text-3xl font-bold text-white mb-4">Web Systems</h3>
+<p class="text-on-surface-variant mb-6">Immersive web applications with serverless backend integration and real-time data sync.</p>
+<div class="flex flex-wrap gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="w-2 h-2 rounded-full bg-tertiary/60"></span>
+<span class="w-2 h-2 rounded-full bg-tertiary/30"></span>
+</div>
+</div>
+</div>
+<!-- Software Reselling -->
+<div class="md:col-span-8 group relative overflow-hidden p-8 glass-card rounded-full bg-gradient-to-r from-surface-container-low to-surface-container-high" data-three-type="reselling">
+<div class="three-canvas-container" id="canvas-reselling"></div>
+<div class="flex flex-col md:flex-row gap-10 items-center h-full relative z-10">
+<div class="flex-1">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-6">shopping_cart_checkout</span>
+<h3 class="font-headline text-3xl font-bold text-white mb-4">Software Reselling</h3>
+<p class="text-on-surface-variant">Strategic partnerships with global vendors to provide the most competitive licensing and implementation support for enterprise software suites.</p>
+</div>
+<div class="w-full md:w-1/3 flex justify-center">
+<div class="relative w-32 h-32">
+<div class="absolute inset-0 bg-secondary/20 rounded-xl rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
+<div class="absolute inset-2 bg-secondary/40 rounded-xl -rotate-12 group-hover:rotate-12 transition-transform duration-700"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-5xl">verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Expert Engineering Philosophy -->
+<section class="max-w-7xl mx-auto px-6 mb-40">
+<div class="bg-surface-container-low rounded-full p-12 md:p-24 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-30">
+<img alt="" class="w-full h-full object-cover mix-blend-luminosity grayscale hover:grayscale-0 transition-all duration-1000" data-alt="Abstract macro shot of futuristic blue circuitry and fiber optic cables glowing with soft bioluminescent light in a dark server room environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvBg6cWsRLRfdATZZLZ_G2fC9fu49F-Aggd6n3jr8ehE0nvh7p_8dRfZ7Q81AY2TzdForfd7oanP_amJD97TOqSYcpoQTfKOpVBM9hUXvq5hhnPulcJOaAmx6b5ybeJjcFw9wlyofiagZyvPUyW141m-2gpfPJmAVRxh7Cp_ip8yTBhflo9us4HjkuUkpxShV_GJ1Y4NR7tz3XY0F6NCpjT5nmzpCY3nE-mo3sdxlrJJlbk-ki8GrVET0svhEfGsLguWMsEmvHYgHP"/>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-headline text-5xl font-bold text-white mb-8 tracking-tight">Expert Engineering Philosophy</h2>
+<div class="space-y-8">
+<div class="flex gap-6 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center group-hover/item:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+</div>
+<div>
+<h4 class="font-headline text-xl text-white mb-2">Atomic Precision</h4>
+<p class="text-on-surface-variant">We believe in micro-optimizations. Every line of code is reviewed for its impact on CPU cycles and memory footprint.</p>
+</div>
+</div>
+<div class="flex gap-6 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-tertiary/20 flex items-center justify-center group-hover/item:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary">psychology</span>
+</div>
+<div>
+<h4 class="font-headline text-xl text-white mb-2">Ethical Automation</h4>
+<p class="text-on-surface-variant">Engineering is a human-centric endeavor. We automate to empower your workforce, not to replace the human element.</p>
+</div>
+</div>
+<div class="flex gap-6 group/item">
+<div class="flex-shrink-0 w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center group-hover/item:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary">update</span>
+</div>
+<div>
+<h4 class="font-headline text-xl text-white mb-2">Future-Proof Resilience</h4>
+<p class="text-on-surface-variant">We build with the horizon in mind, ensuring your infrastructure is modular and ready for the next technological paradigm shift.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-6 text-center">
+<div class="relative py-24 px-8 overflow-hidden rounded-full group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container via-surface-container-high to-tertiary-container opacity-20 group-hover:opacity-30 transition-opacity"></div>
+<div class="relative z-10">
+<h2 class="font-headline text-4xl md:text-6xl font-bold text-white mb-6">Ready to transcend the <br/>ordinary?</h2>
+<p class="text-on-surface-variant text-xl mb-12 max-w-2xl mx-auto">Discuss your project with our lead architects and see how we can bring kinetic energy to your digital roadmap.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-primary/20 transition-all duration-300">
+                            Book a Consultation
+                        </button>
+<button class="glass-card text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300">
+                            View Case Studies
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-950 w-full pt-16 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<div class="text-lg font-black text-white font-headline mb-6">Bitlogic</div>
+<p class="text-slate-500 font-body text-sm leading-relaxed">Engineering the kinetic future of enterprise technology with precision and creativity.</p>
+</div>
+<div>
+<h5 class="text-white font-headline text-sm font-bold uppercase tracking-widest mb-6">Expertise</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Systems Dev</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Mobile Apps</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Web Solutions</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Software Reselling</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-headline text-sm font-bold uppercase tracking-widest mb-6">Company</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">About Us</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Careers</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Partners</a></li>
+<li><a class="text-slate-500 hover:text-cyan-300 transition-colors text-sm" href="#">Legal</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-headline text-sm font-bold uppercase tracking-widest mb-6">Contact</h5>
+<p class="text-slate-500 text-sm mb-4">hq@bitlogic.tech</p>
+<div class="flex space-x-4">
+<span class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors cursor-pointer">share</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors cursor-pointer">terminal</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-primary transition-colors cursor-pointer">hub</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 mt-16 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 font-body text-xs">© 2024 Bitlogic Technologies. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-white transition-colors text-xs" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-white transition-colors text-xs" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<script>
+        class ThreeAnimator {
+            constructor(containerId, color, shapeType) {
+                this.container = document.getElementById(containerId);
+                this.color = new THREE.Color(color);
+                this.shapeType = shapeType;
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, this.container.clientWidth / this.container.clientHeight, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                
+                this.init();
+            }
+
+            init() {
+                this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+                this.renderer.setPixelRatio(window.devicePixelRatio);
+                this.container.appendChild(this.renderer.domElement);
+                
+                this.camera.position.z = 5;
+
+                // Create particles or geometry based on type
+                if (this.shapeType === 'system') {
+                    this.createGrid();
+                } else if (this.shapeType === 'mobile') {
+                    this.createFloatingCubes();
+                } else if (this.shapeType === 'web') {
+                    this.createTorus();
+                } else {
+                    this.createSphere();
+                }
+
+                this.mouseX = 0;
+                this.mouseY = 0;
+                this.targetX = 0;
+                this.targetY = 0;
+
+                window.addEventListener('mousemove', (e) => {
+                    const rect = this.container.getBoundingClientRect();
+                    if (e.clientX > rect.left && e.clientX < rect.right && e.clientY > rect.top && e.clientY < rect.bottom) {
+                        this.targetX = (e.clientX - rect.left - rect.width / 2) * 0.005;
+                        this.targetY = (e.clientY - rect.top - rect.height / 2) * 0.005;
+                    }
+                });
+
+                this.animate();
+
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+                });
+            }
+
+            createGrid() {
+                const geometry = new THREE.BufferGeometry();
+                const vertices = [];
+                for (let i = 0; i < 2000; i++) {
+                    vertices.push(THREE.MathUtils.randFloatSpread(10));
+                    vertices.push(THREE.MathUtils.randFloatSpread(10));
+                    vertices.push(THREE.MathUtils.randFloatSpread(10));
+                }
+                geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+                const material = new THREE.PointsMaterial({ color: this.color, size: 0.05 });
+                this.points = new THREE.Points(geometry, material);
+                this.scene.add(this.points);
+            }
+
+            createFloatingCubes() {
+                this.group = new THREE.Group();
+                for (let i = 0; i < 20; i++) {
+                    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+                    const material = new THREE.MeshBasicMaterial({ color: this.color, wireframe: true, transparent: true, opacity: 0.5 });
+                    const cube = new THREE.Mesh(geometry, material);
+                    cube.position.set(THREE.MathUtils.randFloatSpread(8), THREE.MathUtils.randFloatSpread(8), THREE.MathUtils.randFloatSpread(8));
+                    cube.rotation.set(Math.random(), Math.random(), Math.random());
+                    this.group.add(cube);
+                }
+                this.scene.add(this.group);
+            }
+
+            createTorus() {
+                const geometry = new THREE.TorusKnotGeometry(2, 0.4, 100, 16);
+                const material = new THREE.MeshBasicMaterial({ color: this.color, wireframe: true, transparent: true, opacity: 0.4 });
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.scene.add(this.mesh);
+            }
+
+            createSphere() {
+                const geometry = new THREE.IcosahedronGeometry(2.5, 2);
+                const material = new THREE.MeshBasicMaterial({ color: this.color, wireframe: true, transparent: true, opacity: 0.3 });
+                this.mesh = new THREE.Mesh(geometry, material);
+                this.scene.add(this.mesh);
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                this.mouseX += (this.targetX - this.mouseX) * 0.05;
+                this.mouseY += (this.targetY - this.mouseY) * 0.05;
+
+                if (this.points) {
+                    this.points.rotation.y += 0.002;
+                    this.points.rotation.x = this.mouseY;
+                    this.points.rotation.z = this.mouseX;
+                }
+                if (this.group) {
+                    this.group.rotation.y += 0.005;
+                    this.group.children.forEach(c => {
+                        c.rotation.x += 0.01;
+                        c.rotation.z += 0.01;
+                    });
+                    this.group.rotation.x = this.mouseY;
+                }
+                if (this.mesh) {
+                    this.mesh.rotation.y += 0.01;
+                    this.mesh.rotation.x = this.mouseY;
+                    this.mesh.rotation.z = this.mouseX;
+                }
+
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Initialize animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new ThreeAnimator('canvas-system', '#7ed3e5', 'system');
+            new ThreeAnimator('canvas-mobile', '#54dea4', 'mobile');
+            new ThreeAnimator('canvas-web', '#d2bbff', 'web');
+            new ThreeAnimator('canvas-reselling', '#74fbbf', 'sphere');
+        });
+    </script>
+</body></html>
